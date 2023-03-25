@@ -49,8 +49,6 @@ window.addEventListener('DOMContentLoaded', () => {
 const showPerson = (person = currentItem ) => {
   const item = reviews[person]
   img.src = item.img
-  console.log(img);
-  console.log(item);
   author.textContent = item.name
   job.textContent = item.job
   info.textContent = item.text
@@ -68,6 +66,18 @@ prevBtn.addEventListener('click', () => {
   currentItem--;
   if (currentItem < 0) {
     currentItem = reviews.length - 1;
+  }
+  showPerson()
+})
+
+
+randomBtn.addEventListener('click', () => {
+  let surprise = Math.ceil(Math.random() * reviews.length - 1)
+  if (currentItem === surprise) {
+    surprise = Math.ceil(Math.random() * reviews.length - 1)
+    currentItem = surprise;
+  }else {
+    currentItem = surprise;
   }
   showPerson()
 })
